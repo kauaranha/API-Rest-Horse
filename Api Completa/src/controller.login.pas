@@ -1,0 +1,122 @@
+unit controller.login;
+
+interface
+
+uses Horse, model.login, System.SysUtils, System.JSON, Horse.Jhonson,
+Horse.JWT, JOSE.Core.JWT, JOSE.Core.Builder, System.DateUtils, controller.jwt, DataSet.Serialize;
+
+procedure Login;
+procedure Get(Req : THorseRequest; Res : THorseResponse; NExt : TProc);
+procedure DeleteLogin(Req : THorseRequest; Res : THorseResponse; NExt : TProc);
+procedure Post(Req : THorseRequest; Res : THorseResponse; Next : Tproc);
+Function GeraToken(IdUsuario:Integer):String;
+
+implementation
+
+const Senha = '12345';
+
+Function GeraToken(IdUsuario:Integer):String;
+var
+      LJWT: TJWT;
+      LToken: String;
+      LClaims : TMyClaims;
+begin
+      LJWT := TJWT.Create(TMyClaims);
+      try
+
+        LJWT.Claims.Expiration := IncHour(Now, 1);
+        LJWT.Claims.JWTId := IdUsuario.ToString;
+
+        LToken := TJOSE.SHA256CompactToken(Senha, LJWT);
+      finally
+        FreeAndNil(LJWT);
+      end;
+
+      Result := LToken;
+end;
+
+procedure Login;
+begin
+  THorse.Get('/login/',Get);
+  Thorse.Post('/login',Post);
+  THorse.Delete('/login/:id', DeleteLogin);
+end;
+
+procedure Post(Req : THorseRequest; Res : THorseResponse; Next : Tproc);
+var
+LdmLogin : TDmLogin;
+JsonRequest : TJSONObject;
+Login, Senha : String;
+begin
+   try
+    LdmLogin := TdmLogin.Create(nil);
+      try
+          JsonRequest := Req.Body<TJSONObject>;
+
+          if not (JsonRequest.TryGetValue('Login', Login) and
+          JsonRequest.TryGetValue('Senha', Senha)) then begin
+             Res.Send('Campo Login ou Senha Estão Ausentes!');
+          end else begin
+             Res.Send<TJSONObject>(LdmLogin.Post(TJSONObject.ParseJSONValue(Req.Body)as TJSONObject));
+          end;
+      finally
+          FreeAndNil(LdmLogin);
+      end;
+   except
+      on e:exception do begin
+          Res.Status(400);
+          Res.Send(e.Message);
+      end;
+   end;
+end;
+
+procedure DeleteLogin(Req : THorseRequest; Res : THorseResponse; NExt : TProc);
+var
+Ldmlogin : TdmLogin;
+id : Integer;
+begin
+   try
+    LdmLogin := TdmLogin.Create(nil);
+      try
+          id := Req.Params['id'].ToInteger;
+
+          LdmLogin.Delete(id);
+          Res.Send('Cliente de ID: ' + IntToStr(id) + ' Excluido com Sucesso!');
+      finally
+          FreeAndNil(LdmLogin);
+      end;
+   except
+      on e:exception do begin
+          res.Status(400);
+          res.Send(e.Message);
+      end;
+   end;
+end;
+
+procedure Get(Req : THorseRequest; Res : THorseResponse; NExt : TProc);
+var
+Ldmlogin : TdmLogin;
+LJson : TJsonObject;
+begin
+   try
+      LdmLogin := TdmLogin.Create(nil);
+      try
+
+        Ljson := LdmLogin.Login(TJSOnObject.ParseJSONValue(Req.Body) as TJSOnObject);
+
+        LJson.AddPair('jwt', GeraToken(Ljson.GetValue<Integer>('id')));
+
+        Res.Send<TJSOnObject>(Ljson);
+
+      finally
+           FreeAndNil(LdmLogin);
+      end;
+   except
+      on e:exception do begin
+          res.Status(400);
+          res.Send(e.Message);
+      end;
+   end;
+end;
+
+end.

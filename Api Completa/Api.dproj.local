@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/12/21 09:01:07.000.373,C:\Users\usuario-dev\Desktop\Api Completa\Api.dproj=C:\Users\usuario-dev\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2023/12/21 09:08:29.000.502,=C:\Users\usuario-dev\Desktop\Api Completa\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 09:09:03.000.137,C:\Users\usuario-dev\Desktop\Api Completa\src\controller.login.pas=C:\Users\usuario-dev\Desktop\Api Completa\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 09:09:22.000.424,=C:\Users\usuario-dev\Desktop\Api Completa\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 09:09:43.000.868,=C:\Users\usuario-dev\Desktop\Api Completa\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 09:10:07.000.243,C:\Users\usuario-dev\Desktop\Api Completa\src\model\model.login.dfm=C:\Users\usuario-dev\Desktop\Api Completa\Unit1.dfm</Transaction>
+    <Transaction>2023/12/21 09:10:07.000.243,C:\Users\usuario-dev\Desktop\Api Completa\src\model\model.login.pas=C:\Users\usuario-dev\Desktop\Api Completa\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 09:17:55.000.556,=C:\Users\usuario-dev\Desktop\Api Completa\Unit2.pas</Transaction>
+    <Transaction>2023/12/21 09:18:18.000.303,C:\Users\usuario-dev\Desktop\Api Completa\src\model\model.con.pas=C:\Users\usuario-dev\Desktop\Api Completa\Unit2.pas</Transaction>
+    <Transaction>2023/12/21 09:18:18.000.303,C:\Users\usuario-dev\Desktop\Api Completa\src\model\model.con.dfm=C:\Users\usuario-dev\Desktop\Api Completa\Unit2.dfm</Transaction>
+    <Transaction>2023/12/21 09:22:36.000.019,=C:\Users\usuario-dev\Desktop\Api Completa\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 09:23:02.000.276,=C:\Users\usuario-dev\Desktop\Api Completa\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 09:24:35.000.069,C:\Users\usuario-dev\Desktop\Api Completa\src\model\model.login.pas=C:\Users\usuario-dev\Desktop\Api Completa\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 09:24:35.000.069,C:\Users\usuario-dev\Desktop\Api Completa\src\model\model.login.dfm=C:\Users\usuario-dev\Desktop\Api Completa\Unit1.dfm</Transaction>
+    <Transaction>2023/12/21 10:30:52.000.045,=C:\Users\usuario-dev\Desktop\Api Completa\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 10:31:04.000.641,C:\Users\usuario-dev\Desktop\Api Completa\src\model\model.pessoas.dfm=C:\Users\usuario-dev\Desktop\Api Completa\Unit1.dfm</Transaction>
+    <Transaction>2023/12/21 10:31:04.000.641,C:\Users\usuario-dev\Desktop\Api Completa\src\model\model.pessoas.pas=C:\Users\usuario-dev\Desktop\Api Completa\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 10:40:41.000.619,=C:\Users\usuario-dev\Desktop\Api Completa\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 10:40:54.000.569,C:\Users\usuario-dev\Desktop\Api Completa\src\controller\controller.pessoas.pas=C:\Users\usuario-dev\Desktop\Api Completa\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 11:23:59.000.257,=C:\Users\usuario-dev\Desktop\Api Completa\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 11:24:27.000.218,C:\Users\usuario-dev\Desktop\Api Completa\src\controller\controller.jwt.pas=C:\Users\usuario-dev\Desktop\Api Completa\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 14:50:19.000.366,=C:\Users\usuario-dev\Desktop\Api Completa\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 14:50:37.000.208,C:\Users\usuario-dev\Desktop\Api Completa\Unit1.pas=C:\Users\usuario-dev\Desktop\Api Completa\src\model\model.funcao.pas</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="src"/>
+    <File Path="src\controller"/>
+    <File Path="src\controller\controller.pessoas.pas"/>
+    <File Path="src\controller\controller.jwt.pas"/>
+    <File Path="src\model"/>
+    <File Path="src\model\model.con.pas"/>
+    <File Path="src\model\model.con.dfm"/>
+    <File Path="src\model\model.login.pas"/>
+    <File Path="src\model\model.login.dfm"/>
+    <File Path="src\model\model.pessoas.pas"/>
+    <File Path="src\model\model.pessoas.dfm"/>
+    <File Path="src\controller.login.pas"/>
+  </ProjectSortOrder>
+</BorlandProject>

@@ -1,0 +1,20 @@
+inherited DmLogin: TDmLogin
+  object tab_login: TFDQuery
+    Connection = DB
+    SQL.Strings = (
+      'SELECT* FROM clientes'
+      'WHERE login = :login'
+      'AND senha = :senha')
+    Left = 472
+    Top = 184
+    ParamData = <
+      item
+        Name = 'LOGIN'
+        ParamType = ptInput
+      end
+      item
+        Name = 'SENHA'
+        ParamType = ptInput
+      end>
+  end
+end

@@ -1,0 +1,62 @@
+unit model.login;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, model.con, System.JSON, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf,
+  FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys,
+  FireDAC.Phys.MySQL, FireDAC.Phys.MySQLDef, FireDAC.ConsoleUI.Wait, Data.DB,
+  FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
+  FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.VCLUI.Wait, DataSet.Serialize;
+
+type
+  TDmLogin = class(TDmCon)
+    tab_login: TFDQuery;
+  private
+    { Private declarations }
+  public
+    function Login(ABody: TJSONObject) : TJSONObject;
+    function Delete(id : Integer) : TJSONObject;
+  end;
+
+var
+  DmLogin: TDmLogin;
+
+implementation
+
+
+function TdmLogin.Delete(id : Integer) : TJSONObject;
+begin
+      tab_login.Open;
+      tab_login.SQL.Clear;
+      tab_login.SQL.Add('DELETE FROM pessoas WHERE id=:id');
+      tab_login.ParamByName('id').Value := id;
+      tab_login.ExecSQL;
+      Result := tab_login.ToJSONObject;
+end;
+
+function TdmLogin.Login(ABody: TJSONObject): TJSONObject;
+var
+login, senha : string;
+begin
+//  tab_login.Params.Clear;
+
+  login := Abody.GetValue<string>('login');
+  senha := Abody.GetValue<string>('senha');
+  
+  tab_login.ParamByName('login').AsString := login;
+  tab_login.ParamByName('senha').AsString := senha;
+
+  tab_login.Open;
+
+ 
+
+  Result := tab_login.ToJSONObject;
+end;
+
+{%CLASSGROUP 'System.Classes.TPersistent'}
+
+{$R *.dfm}
+
+end.

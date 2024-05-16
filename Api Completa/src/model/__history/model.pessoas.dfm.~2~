@@ -1,0 +1,7 @@
+inherited DmCon1: TDmCon1
+  object tab_pessoas: TFDQuery
+    Connection = DB
+    Left = 496
+    Top = 264
+  end
+end

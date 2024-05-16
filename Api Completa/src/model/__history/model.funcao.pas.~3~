@@ -1,0 +1,122 @@
+unit model.funcao;
+
+interface
+
+procedure SendStatus(Res: THorseResponse; StatusCode:Integer; MSG: String = '');
+
+implementation
+
+procedure SendStatus(Res: THorseResponse; StatusCode:Integer; MSG: String = '');
+var obj:TJSONObject;
+    header:TJSONObject;
+    jso, jObject:TJSONObject;
+    MSGPadrao:String;
+begin
+  jso := TJSONObject.Create;
+  jObject := TJSONObject.Create;
+  obj := TJSONObject.Create;
+  header := TJSONObject.Create;
+  Try
+    case StatusCode of
+      100:// Continue
+        begin
+
+        end;
+      101:// Switching Protocol
+        begin
+
+        end;
+      102:// Processing (WebDAV)
+        begin
+
+        end;
+      103:// Early Hints
+        begin
+
+        end;
+      200:// OK
+        begin
+          header.AddPair(TJSONPair.Create('codigo','0'));
+          MSGPadrao := 'Sucesso!';
+        end;
+      201:// Created
+        begin
+          header.AddPair(TJSONPair.Create('codigo','0'));
+          MSGPadrao := 'Criado!';
+        end;
+      202:// Accepted
+        begin
+          header.AddPair(TJSONPair.Create('codigo','0'));
+          MSGPadrao := 'Aceito!';
+        end;
+      203:// Non-Authoritative Information
+        begin
+
+        end;
+      204:// No Content
+        begin
+          header.AddPair(TJSONPair.Create('codigo','1'));
+          MSGPadrao := 'Nenhum conteúdo a exibir';
+        end;
+      205:// Reset Content
+        begin
+
+        end;
+      206:// Partial Content
+        begin
+
+        end;
+      304:// Not Modified - Cache do ETag
+        begin
+          header.AddPair(TJSONPair.Create('codigo','0'));
+          MSGPadrao := 'Nenhuma modificação na informação do servidor';
+        end;
+      400:// Bad Request
+        begin
+          header.AddPair(TJSONPair.Create('codigo','1'));
+          MSGPadrao := 'URI/Paramêtros Incorretos';
+        end;
+      401:// Unauthorized
+        begin
+          header.AddPair(TJSONPair.Create('codigo','1'));
+          MSGPadrao := 'Auth-Hash inválido para consumo da API ou de empresa inativa';
+        end;
+      403:// Forbidden
+        begin
+          header.AddPair(TJSONPair.Create('codigo','1'));
+          MSGPadrao := 'Método não permitido';
+        end;
+      404:// Not Found
+        begin
+
+        end;
+      405:// Method Not Allowed
+        begin
+
+        end;
+      409: //Conflict
+        begin
+          header.AddPair(TJSONPair.Create('codigo','1'));
+          MSGPadrao := 'Conflito na operação!';
+        end;
+      500:// Internal Server Error
+        begin
+          header.AddPair(TJSONPair.Create('codigo','1'));
+          WriteLn('Erro: '+MSG);
+        end;
+      501:// Not Implemented
+        begin
+
+        end;
+      503:// Service Unavailable
+        begin
+
+        end;
+      else
+        begin
+          header.AddPair(TJSONPair.Create('codigo','1'));
+          MSGPadrao := 'Erro não catalogado na API';
+        end;
+    end;
+
+end.

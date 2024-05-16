@@ -1,0 +1,7 @@
+inherited DmLogin: TDmLogin
+  object tab_login: TFDQuery
+    Connection = DB
+    Left = 472
+    Top = 184
+  end
+end

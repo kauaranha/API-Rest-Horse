@@ -1,0 +1,20 @@
+object DmCon: TDmCon
+  Height = 480
+  Width = 640
+  object DB: TFDConnection
+    Params.Strings = (
+      'Database=fazendinha'
+      'User_Name=wise'
+      'Password=#Ws!0zWISEd1o8d0i5%'
+      'Server=bagre'
+      'DriverID=MySQL')
+    Connected = True
+    Left = 312
+    Top = 152
+  end
+  object FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink
+    VendorLib = 'C:\Users\usuario-dev\Downloads\libmysql.dll'
+    Left = 296
+    Top = 272
+  end
+end

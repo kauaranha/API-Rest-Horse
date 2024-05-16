@@ -1,0 +1,16 @@
+object DataModule2: TDataModule2
+  Height = 480
+  Width = 640
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=fazendinha'
+      'DriverID=MySQL')
+    Left = 312
+    Top = 152
+  end
+  object FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink
+    VendorLib = 'C:\Users\usuario-dev\Downloads\libmysql.dll'
+    Left = 296
+    Top = 272
+  end
+end
